@@ -2,6 +2,7 @@ import {Text, TouchableOpacity, TouchableOpacityProps, View} from "react-native"
 import {StyleSheet} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 import {useEffect, useState} from "react";
+import {gameArrayGenerator} from "../utils/utils.ts";
 
 interface TargetNumberProps {
     x: number;
@@ -69,23 +70,9 @@ const Game = () => {
         setNumY(randomY);
 
         const sum = randomX + randomY;
-        const correctPos = Math.floor(Math.random() * 3); // index of correct value
 
-        const newArr = [0, 0, 0];
-        for (let i = 0; i < 3; i++) {
-            if (i === correctPos) {
-                newArr[i] = sum;
-            } //
-            else {
-                let wrongNum = sum;
-                while (wrongNum === sum) {
-                    wrongNum += Math.floor(Math.random() * 3);
-                }
-                newArr[i] = wrongNum;
-            }
-        }
 
-        setButtonValues(newArr);
+        setButtonValues(gameArrayGenerator(sum));
 
     }, [numCorrect, numIncorrect]);
 
