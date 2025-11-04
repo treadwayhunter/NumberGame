@@ -32,9 +32,13 @@ const GameButton = (props: GameButtonProps) => {
 
 const ScoreBoard = (props: ScoreBoardProps) => {
     return (
-        <View>
-            <Text>Correct: {props.correct}</Text>
-            <Text>Wrong: {props.incorrect}</Text>
+        <View style={styles.scoreBoard}>
+            <View style={styles.scoreBoardContainer}>
+                <Text style={[styles.scoreBoardContainerText, {color: 'green'}]}>{props.correct}</Text>
+            </View>
+            <View style={styles.scoreBoardContainer}>
+                <Text style={[styles.scoreBoardContainerText, {color: 'red'}]}>{props.incorrect}</Text>
+            </View>
         </View>
     );
 }
@@ -116,6 +120,20 @@ const styles = StyleSheet.create({
     },
     gameButtonText: {
         fontSize: 30
+    },
+    scoreBoard: {
+        height: '20%',
+        flexDirection: 'row'
+    },
+    scoreBoardContainer :{
+        width: '50%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    scoreBoardContainerText: {
+        fontSize: 32,
+        fontWeight: 'bold',
     },
     target: {
         height: '50%',
